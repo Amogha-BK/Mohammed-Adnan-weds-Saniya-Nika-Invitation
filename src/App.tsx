@@ -41,7 +41,7 @@ const indiaClock = new Intl.DateTimeFormat("en-GB", {
 });
 
 const navItems = [
-  ["Our Wedding", "our-wedding"],
+  ["Our Nikah", "our-wedding"],
   ["Celebrations", "celebrations"],
   ["Venue", "venue"],
   ["Contact", "contact"],
@@ -175,7 +175,7 @@ function MusicControl({
         <audio
           ref={audio}
           src={config.optional.musicUrl}
-          preload="metadata"
+          preload="none"
           loop
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
@@ -399,7 +399,7 @@ function EventCard({ event, index }: { event: Celebration; index: number }) {
         <span className="function-card-event-badge">
           Celebration {String(index + 1).padStart(2, "0")}
         </span>
-        <h3>{event.id === "wedding" ? "Shubh Vivaah" : event.shortName}</h3>
+        <h3>{event.shortName}</h3>
         <p className="function-card-subtitle">{subtitle}</p>
       </div>
       <div className="function-card-details">
@@ -688,11 +688,12 @@ function RSVP() {
 export default function App() {
   const config = useInvitation();
   const [opened, setOpened] = useState(false);
+  const [started, setStarted] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const invitationHeading = useRef<HTMLHeadingElement>(null);
   const reducedMotion = useReducedMotion();
   const weddingAudio = useRef<HTMLAudioElement>(null);
-  const dissolveDuration = reducedMotion ? 0.25 : 2.2;
+  const dissolveDuration = reducedMotion ? 0.15 : 0.7;
 
   useEffect(() => {
     if (revealed) {
@@ -723,6 +724,7 @@ export default function App() {
   }, [revealed]);
 
   const handleStartOpening = () => {
+    setStarted(true);
     if (!weddingAudio.current) return;
     weddingAudio.current.volume = 0.35;
     void weddingAudio.current.play().catch(() => {});
@@ -768,7 +770,7 @@ export default function App() {
       >
         <Navigation />
         <MusicControl canPlay={opened} audio={weddingAudio} />
-        <main>
+        {started && <main>
           <a className="skip-to-content focus-ring" href="#celebrations">
             Skip to celebration details
           </a>
@@ -791,8 +793,8 @@ export default function App() {
                 <p className="hero-art-caption">The beginning of our beautiful forever</p>
               </div>
               <div className="hero-inner">
-                <p className="ganesh-invocation">॥ Shri Ganeshaya Namah ॥</p>
-                <p className="eyebrow">Together with our families</p>
+                <p className="nikah-invocation" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                <p className="eyebrow">Dawat-e-Nikah</p>
                 <h1 ref={invitationHeading} tabIndex={-1}>
                   <span className="hero-name">{config.couple.first}</span>
                   <span className="hero-ampersand">&amp;</span>
@@ -825,21 +827,21 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
             >
-              <SectionHeading eyebrow="With love & blessings">
-                An invitation from our hearts
+              <SectionHeading eyebrow="Aapki shirkat ke muntazir">
+                Dawat-e-Nikah
               </SectionHeading>
               <p className="family-memory">{config.memorialLine}</p>
               <p>{config.invitationLine}</p>
               <div className="invitation-families" aria-label="The couple and their families">
                 <div>
                   <h2>{config.couple.first}</h2>
-                  <p>{config.couple.brideParents}</p>
+                  <p>{config.couple.groomParents}</p>
                 </div>
                 <span className="family-weds">weds</span>
                 <div>
                   <h2>{config.couple.second}</h2>
                   <p>{config.couple.groomGrandparents}</p>
-                  <p>{config.couple.groomParents}</p>
+                  <p>{config.couple.brideParents}</p>
                 </div>
               </div>
               <p className="family-blessing">{config.blessingLine}</p>
@@ -849,7 +851,7 @@ export default function App() {
                   <p>{config.rsvp}</p>
                 </div>
                 <div>
-                  <h3>With best wishes from:</h3>
+                  <h3>With regards — Minjanib:</h3>
                   <p>{config.wishesFrom}</p>
                 </div>
               </div>
@@ -897,7 +899,7 @@ export default function App() {
               className="venue-artwork"
               style={{ backgroundImage: `url("${config.media.venueArtworkUrl}")` }}
               role="img"
-              aria-label="A garden wedding setting with a flower-covered mandap"
+              aria-label="Decorative Mughal arch with jasmine, ivory flowers and gold lanterns for the Nikah"
             />
             <div className="venue-content">
               <SectionHeading eyebrow="A beautiful place for a new beginning">
@@ -931,7 +933,7 @@ export default function App() {
           <footer id="contact">
             <div className="closing-copy">
               <Monogram />
-              <SectionHeading eyebrow="We are here to help">With warm regards</SectionHeading>
+              <SectionHeading eyebrow="Minjanib">With regards</SectionHeading>
               <p className="closing-message">{config.hosts}</p>
               <p>{config.homeAddress}</p>
               <div className="family-contacts">
@@ -969,7 +971,7 @@ export default function App() {
               </div>
             </div>
           </footer>
-        </main>
+        </main>}
       </motion.div>
     </>
   );

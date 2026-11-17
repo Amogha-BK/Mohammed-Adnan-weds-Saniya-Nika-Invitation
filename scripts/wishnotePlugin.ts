@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Plugin } from "vite";
-import { MAX_RECORD_BYTES, validateRecord } from "../src/invitation/schema";
+import { MAX_RECORD_BYTES, validateRecord } from "../src/invitation/schema.ts";
 
 export function wishnotePlugin(): Plugin {
   const editor = process.env.WISHNOTE_EDITOR === "1";
@@ -118,11 +118,12 @@ export function wishnotePlugin(): Plugin {
       // Personalized builds copy only shared template assets and explicitly selected media.
       // Never copy the entire original customer's public directory into a new order.
       const files = new Set([
-        "/assets/envelope-opening-safari.mp4",
-        "/envelope-poster.jpg",
+        "/assets/envelope-opening-mobile-v1.mp4",
+        "/assets/envelope-poster-mobile-v1.jpg",
         "/assets/mehndi-floral-arch-v2.webp",
         "/assets/haldi-floral-arch-v2.webp",
         "/assets/wedding-floral-arch-v2.webp",
+        ...fs.readdirSync("public/assets/fonts").map((file) => `/assets/fonts/${file}`),
       ]);
       for (const file of [
         record.media.portraitUrl,

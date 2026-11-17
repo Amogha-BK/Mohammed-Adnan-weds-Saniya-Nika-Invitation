@@ -47,8 +47,8 @@ export function CouplePortrait({
         <img
           src={config.media.portraitUrl}
           alt={config.media.portraitAlt}
-          width="1064"
-          height="1479"
+          width="720"
+          height="1080"
           fetchPriority="high"
           decoding="async"
         />

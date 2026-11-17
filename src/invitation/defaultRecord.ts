@@ -1,14 +1,14 @@
 import { invitationConfig as original } from "../invitationConfig";
 import type { WeddingRecord } from "./schema";
 
-/** Read-only adapter: the existing customer's source configuration stays untouched. */
+/** Customer details shared by the invitation and local editor. */
 export const customerRecord: WeddingRecord = {
   version: 1,
   templateId: "botanical",
   language: "en",
   weddingDate: original.countdownTarget.slice(0, 10),
-  city: "Indirapuram",
-  scratchLocation: "Indirapuram, Ghaziabad",
+  city: "Ladnun",
+  scratchLocation: "Royal Vardhman Guest House, Ladnun",
   couple: { ...original.couple },
   countdownTarget: original.countdownTarget,
   memorialLine: original.memorialLine,
@@ -22,15 +22,15 @@ export const customerRecord: WeddingRecord = {
   contacts: [...original.contacts],
   optional: { ...original.optional },
   media: {
-    portraitUrl: "/assets/couple-illustration-v1.png",
-    portraitAlt: "An illustrated couple in a teal lehenga and navy sherwani, standing together",
+    portraitUrl: "/assets/muslim-couple-v1.webp",
+    portraitAlt: "A Muslim bride in an emerald bridal gharara and head-draped dupatta beside her groom in an ivory sherwani and safa",
     venueArtworkUrl: original.artwork,
   },
   wording: {
-    heroMessage: "A lifetime of love begins with a moment shared with you.",
-    heroFootnote: "Your presence and blessings mean the world to us.",
-    celebrationsIntro: "Two days of cherished traditions, laughter, and a lifetime of love.",
-    closingNote: "Our celebration is complete with you.",
+    heroMessage: "Dawat-e-Nikah — With the blessings of Allah, a beautiful new chapter begins. Insha’Allah.",
+    heroFootnote: "Aapki shirkat aur duaon ke muntazir.",
+    celebrationsIntro: "Rasm-e-Haldi aur Mehndi se Nikah aur Walima tak — three days of family, joy and heartfelt duas.",
+    closingNote: "Tashreef laaiye aur apni duaon se nawaziye.",
   },
   celebrations: original.celebrations.map((event) => ({ ...event, phereTime: "" })),
 };

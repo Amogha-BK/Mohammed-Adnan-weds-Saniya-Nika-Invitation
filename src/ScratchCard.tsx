@@ -10,6 +10,7 @@ export function ScratchCard() {
   const [scratchPercent, setScratchPercent] = useState(0);
   const isDrawing = useRef(false);
   const lastPoint = useRef<{ x: number; y: number } | null>(null);
+  const lastProgressCheck = useRef(0);
 
   useEffect(() => {
     if (isRevealed) return;
@@ -104,7 +105,11 @@ export function ScratchCard() {
     }
 
     lastPoint.current = { x, y };
-    checkProgress();
+    const now = performance.now();
+    if (now - lastProgressCheck.current >= 120) {
+      lastProgressCheck.current = now;
+      checkProgress();
+    }
   };
 
   const checkProgress = () => {
@@ -163,6 +168,7 @@ export function ScratchCard() {
   };
 
   const handlePointerUp = () => {
+    if (isDrawing.current) checkProgress();
     isDrawing.current = false;
     lastPoint.current = null;
   };

@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+@import "./fonts.css";
 
 :root {
   --ivory: #fff5cb;
@@ -215,7 +215,7 @@ textarea:focus-visible {
   max-width: 900px;
   margin: auto;
 }
-.ganesh-invocation {
+.nikah-invocation {
   color: var(--teal);
   font: 600 20px/1.6 var(--font-display);
 }
@@ -674,9 +674,9 @@ textarea:focus-visible {
 }
 .events {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 26px;
-  max-width: 1280px;
+  max-width: 1040px;
   margin: 48px auto 0;
 }
 .wedding-function-card {
@@ -832,7 +832,7 @@ textarea:focus-visible {
 }
 .venue-artwork {
   min-height: 530px;
-  background: url("/assets/shristi-harsh-celebration.png") center / cover;
+  background: url("/assets/muslim-nikah-v1.webp") center / cover;
 }
 .venue-content {
   padding: 48px 36px;
@@ -1237,7 +1237,7 @@ footer .monogram {
     width: 62px;
     top: 1%;
   }
-  .ganesh-invocation {
+  .nikah-invocation {
     font-size: 18px;
   }
   .hero-monogram {
@@ -1647,7 +1647,7 @@ footer .monogram {
   text-align: left;
   margin: 0;
 }
-.cinematic-hero .ganesh-invocation {
+.cinematic-hero .nikah-invocation {
   font-size: 19px;
   margin-bottom: 22px;
 }
@@ -1658,7 +1658,9 @@ footer .monogram {
 .cinematic-hero h1 {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
   gap: 0;
   margin: 28px 0 22px;
   font: 400 clamp(82px, 7vw, 112px)/1.03 var(--font-script);
@@ -1671,7 +1673,7 @@ footer .monogram {
   color: var(--gold);
   font-size: 0.48em;
   line-height: 1.05;
-  margin-left: 30%;
+  margin-left: 0;
   padding-block: 5px;
 }
 .cinematic-hero .hero-invitation-line {
@@ -1786,7 +1788,7 @@ footer .monogram {
   .cinematic-hero h1 {
     font-size: 78px;
   }
-  .cinematic-hero .ganesh-invocation {
+  .cinematic-hero .nikah-invocation {
     font-size: 17px;
     margin-bottom: 18px;
   }
@@ -1847,7 +1849,7 @@ footer .monogram {
     text-align: center;
     max-width: 100%;
   }
-  .cinematic-hero .ganesh-invocation {
+  .cinematic-hero .nikah-invocation {
     margin-bottom: 16px;
     font-size: 18px;
   }
@@ -2553,7 +2555,7 @@ footer::before {
   position: absolute;
   inset: 0 0 auto;
   height: 170px;
-  background: url('/assets/wedding-floral-arch-v2.webp') center top / 620px auto repeat-x;
+  background: url('/assets/muslim-nikah-v1.webp') center top / 620px auto repeat-x;
   mask-image: linear-gradient(#000 5%, #0009 48%, transparent);
   pointer-events: none;
   z-index: -1;
@@ -2579,7 +2581,7 @@ footer::before {
   padding: 36px 20px 28px;
   border: 1px solid #cbb17a;
   border-radius: 48% 48% 8px 8px / 30% 30% 8px 8px;
-  background: linear-gradient(#fff8e8a6, #fbefd8 75%), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat;
+  background: linear-gradient(#fff8e8a6, #fbefd8 75%), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat;
   box-shadow: inset 0 0 0 8px #fff9ed80, 0 16px 50px #6848320c;
 }
 .hero-portrait-caption {
@@ -2607,7 +2609,7 @@ footer::before {
   padding: 90px 64px 60px;
   border: 1px solid var(--gold-light);
   border-radius: 180px 180px 12px 12px / 70px 70px 12px 12px;
-  background: linear-gradient(#fff9edeb, #fff9ed 260px), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat;
+  background: linear-gradient(#fff9edeb, #fff9ed 260px), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat;
   box-shadow: 0 16px 60px #68483208, inset 0 0 0 9px #f6e8cb;
 }
 .family-section::before {
@@ -2687,12 +2689,12 @@ footer::before {
 }
 .cinematic-hero { padding-top: 190px; }
 .hero-portrait-column {
-  background: linear-gradient(transparent, #fbefd880 30%, #fbefd8 80%), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat;
+  background: linear-gradient(transparent, #fbefd880 30%, #fbefd8 80%), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat;
   padding-top: 90px;
 }
 .family-section {
   padding-top: 210px;
-  background: linear-gradient(transparent, #fff9ed 240px), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat, #fff9ed;
+  background: linear-gradient(transparent, #fff9ed 240px), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat, #fff9ed;
 }
 .family-section::before { top: 165px; }
 .countdown-section {
@@ -2708,7 +2710,7 @@ footer::before {
   padding: 190px 28px 52px;
   border: 1px solid #b9955b;
   border-radius: 140px 140px 12px 12px / 58px 58px 12px 12px;
-  background: linear-gradient(transparent 0, #fff8e9 210px), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat, #fff8e9;
+  background: linear-gradient(transparent 0, #fff8e9 210px), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat, #fff8e9;
   box-shadow: 0 14px 35px #72502e12;
   text-align: center;
 }
@@ -2739,12 +2741,12 @@ footer { padding-top: 205px; }
   .cinematic-hero { padding-top: 160px; }
   .cinematic-hero::before { height: 155px; }
   .hero-portrait-column { padding-top: 65px; }
-  .family-section { padding-top: 125px; background: linear-gradient(transparent, #fff9ed 155px), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat, #fff9ed; }
+  .family-section { padding-top: 125px; background: linear-gradient(transparent, #fff9ed 155px), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat, #fff9ed; }
   .family-section::before { top: 95px; }
   .countdown-section { padding: 36px 16px; gap: 24px; }
   .date-keepsake, .countdown-panel {
     padding: 145px 18px 36px;
-    background: linear-gradient(transparent, #fff8e9 160px), url('/assets/wedding-floral-arch-v2.webp') center top / 100% auto no-repeat, #fff8e9;
+    background: linear-gradient(transparent, #fff8e9 160px), url('/assets/muslim-nikah-v1.webp') center top / 100% auto no-repeat, #fff8e9;
   }
   .countdown-panel .section-heading h2, .date-keepsake .section-heading h2 { font-size: 42px; }
   .countdown { gap: 6px; }
@@ -2763,7 +2765,7 @@ footer { padding-top: 205px; }
   padding: 56px 28px 210px;
   border-color: #bc8d85;
   border-radius: 12px 12px 140px 140px / 12px 12px 58px 58px;
-  background: linear-gradient(to bottom, #fff6ec 0%, #fff6ec calc(100% - 190px), transparent 100%), url('/assets/mehndi-floral-arch-v2.webp') center bottom / 100% auto no-repeat, #fff6ec;
+  background: linear-gradient(to bottom, #fff6ec 0%, #fff6ec calc(100% - 190px), transparent 100%), url('/assets/muslim-mehndi-v1.webp') center bottom / 100% auto no-repeat, #fff6ec;
 }
 .countdown-panel::after { border-color: #d4b29c; }
 .countdown-panel .section-heading h2,
@@ -2776,7 +2778,7 @@ footer { padding-top: 205px; }
 @media (max-width: 520px) {
   .countdown-panel {
     padding: 38px 18px 165px;
-    background: linear-gradient(to bottom, #fff6ec 0%, #fff6ec calc(100% - 155px), transparent 100%), url('/assets/mehndi-floral-arch-v2.webp') center bottom / 100% auto no-repeat, #fff6ec;
+    background: linear-gradient(to bottom, #fff6ec 0%, #fff6ec calc(100% - 155px), transparent 100%), url('/assets/muslim-mehndi-v1.webp') center bottom / 100% auto no-repeat, #fff6ec;
   }
 }
 
@@ -2791,7 +2793,7 @@ footer { padding-top: 205px; }
   box-shadow: 0 18px 50px #6848320c, inset 0 0 0 10px #f5ead4, inset 0 0 0 11px #d8c49c;
 }
 .family-section::before {
-  content: 'S & H';
+  content: 'M & S';
   top: 28px;
   left: calc(50% - 38px);
   width: 76px;
@@ -2867,13 +2869,13 @@ footer { padding-top: 205px; }
   height: 300px;
   z-index: -1;
   border-radius: 7px;
-  background: url('/assets/mehndi-floral-arch-v2.webp') center top / 100% auto no-repeat;
+  background: url('/assets/muslim-mehndi-v1.webp') center top / 100% auto no-repeat;
   mask-image: linear-gradient(to right, #000, #000 12%, transparent 35%, transparent 65%, #000 88%, #000), linear-gradient(#000, transparent 100%);
   mask-composite: intersect;
   pointer-events: none;
 }
 .family-section::before {
-  content: 'S & H';
+  content: 'M & S';
   top: 64px;
   left: calc(50% - 43px);
   width: 86px;
@@ -2906,3 +2908,9 @@ footer { padding-top: 205px; }
   .family-section::before { top: 44px; }
   .family-section::after { height: 230px; background-size: 135% auto; }
 }
+
+
+/* Comfortable mobile controls and a lightweight rendering path. */
+.video-opening .opening-skip { position: absolute; top: auto; right: auto; bottom: max(22px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: max-content; height: auto; max-width: calc(100% - 40px); min-height: 44px; padding: 10px 20px; border: 1px solid #b99c60; border-radius: 6px; color: #493d2c; background: #fff9edf2; font-size: 14px; cursor: pointer; }
+.music-controls { top: max(16px, env(safe-area-inset-top)); }
+@media (hover: none) and (pointer: coarse) { .site-nav { backdrop-filter: none; background: #fff9ed; } .portrait-aura, .portrait-arch .arch-travelling-glint, .hero-is-revealed .hero-ampersand { animation: none; } .gold-mote:nth-of-type(n + 9), .gold-glint:nth-of-type(n + 4) { display: none; } }
