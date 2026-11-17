@@ -60,6 +60,9 @@ type FigmaSiteConfiguration = {
   };
   openGraph?: {
     image?: string;
+    imageAlt?: string;
+    imageWidth?: number;
+    imageHeight?: number;
   };
   analytics?: {
     googleAnalyticsId?: string;
@@ -92,14 +95,24 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
   // Imported HTML keeps its own favicon. New Makes use PNG because Google Search does not
   // support SVG favicons, even though browsers do.
   const favicon = config.icons?.icon ?? "/favicon.png";
-  const socialImage = config.openGraph?.image ?? "";
+  const imagePath = config.openGraph?.image ?? "";
+  const deploymentHost =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VITE_VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VERCEL_URL ||
+    process.env.VITE_VERCEL_URL;
+  const socialImage = imagePath && deploymentHost
+    ? new URL(imagePath, `https://${deploymentHost}`).href
+    : imagePath;
   const language = sanitizeHtmlValue(config.language) || "en";
   const googleAnalyticsId = sanitizeHtmlValue(config.analytics?.googleAnalyticsId);
   const headStart = config.customScripts?.headStart ?? "";
   const headEnd = config.customScripts?.headEnd ?? "";
   const bodyStart = config.customScripts?.bodyStart ?? "";
   const bodyEnd = config.customScripts?.bodyEnd ?? "";
-  const robotsTxt = config.robots?.index === false ? "User-agent: *\nDisallow: /\n" : "";
+  const robotsTxt = config.robots?.index === false
+    ? "User-agent: facebookexternalhit\nUser-agent: Facebot\nUser-agent: WhatsApp\nUser-agent: Twitterbot\nUser-agent: TelegramBot\nUser-agent: LinkedInBot\nAllow: /\n\nUser-agent: *\nDisallow: /\n"
+    : "";
 
   return {
     name: "figma-site-configuration",
@@ -132,6 +145,13 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
         result = replaceHtmlCommentSlot(result, "figma:body-end", bodyEnd);
 
         const tags: HtmlTagDescriptor[] = [];
+        if (deploymentHost) {
+          tags.push({
+            tag: "meta",
+            attrs: { property: "og:url", content: `https://${deploymentHost}/` },
+            injectTo: "head",
+          });
+        }
         if (description) {
           tags.push({
             tag: "meta",
@@ -172,12 +192,47 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
             },
             {
               tag: "meta",
+              attrs: { property: "og:image:type", content: "image/jpeg" },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { property: "og:image:width", content: String(config.openGraph?.imageWidth ?? 1200) },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { property: "og:image:height", content: String(config.openGraph?.imageHeight ?? 630) },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { property: "og:image:alt", content: config.openGraph?.imageAlt ?? title },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
               attrs: { name: "twitter:card", content: "summary_large_image" },
               injectTo: "head",
             },
             {
               tag: "meta",
               attrs: { name: "twitter:image", content: socialImage },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { name: "twitter:image:alt", content: config.openGraph?.imageAlt ?? title },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { name: "twitter:title", content: title },
+              injectTo: "head",
+            },
+            {
+              tag: "meta",
+              attrs: { name: "twitter:description", content: description },
               injectTo: "head",
             },
           );

@@ -6,7 +6,7 @@ const venue = {
   address: "Lane opposite New Rasgollah House, Station Road, Ladnun",
 };
 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${venue.name}, ${venue.address}`)}`;
-const regards = "Haji Mohammed Nathu · Haji Mohammad Rafiq · Mohammed Arif · Mohammed Aslam · Mohammed Arman · Mohammad Ana";
+const regards = "Haji Mohammed Nathu · Haji Mohammad Rafiq · Mohammed Arif · Mohammed Aslam · Mohammed Arman · Mohammed Anas";
 const event = (details: Pick<WeddingEvent, "id" | "shortName" | "title" | "start" | "supportingLine" | "image">): WeddingEvent => ({
   ...details, venue: venue.name, address: venue.address, mapUrl, scene: "lanterns", phereTime: "",
 });
@@ -33,7 +33,7 @@ export const invitationConfig = {
       supportingLine: "Haldi ke rang, apnon ka saath aur khushiyon ki saugaat. Join our family for a warm evening of haldi, flowers and heartfelt duas.",
       image: "/assets/muslim-haldi-v1.webp" }),
     event({ id: "mehndi", shortName: "Mehndi ki Shaam", title: "Mehndi ki Shaam — Rang-e-Mohabbat",
-      start: "2026-12-04T17:00:00+05:30",
+      start: "2026-12-04T20:00:00+05:30",
       supportingLine: "Mehndi ki khushboo, rishton ki mithaas. An evening of henna, laughter and cherished moments with our loved ones.",
       image: "/assets/muslim-mehndi-v1.webp" }),
     event({ id: "wedding", shortName: "Dawat-e-Nikah", title: "Dawat-e-Nikah — Qubool Hai",

@@ -1,6 +1,6 @@
 {
   "title": "Mo. Adnan & Saniya | Dawat-e-Nikah",
-  "description": "Join us for Rasm-e-Haldi and Mehndi on 4 December at 5 p.m., Nikah on 5 December at 1 p.m., and Walima on 6 December 2026 at 7 p.m. at Royal Vardhman Guest House, Station Road, Ladnun.",
+  "description": "Join us for Rasm-e-Haldi on 4 December at 5 p.m., Mehndi at 8 p.m., Nikah on 5 December at 1 p.m., and Walima on 6 December 2026 at 7 p.m. at Royal Vardhman Guest House, Station Road, Ladnun.",
   "icons": {
     "icon": "/assets/ms-monogram.svg"
   },
@@ -12,6 +12,9 @@
     "ignoreReducedMotion": false
   },
   "openGraph": {
-    "image": "/assets/muslim-couple-v1.webp"
+    "image": "/assets/adnan-saniya-share-cover-v1.jpg",
+    "imageAlt": "Mo. Adnan and Saniya's ivory and gold Nikah invitation — 5 December 2026 at 1 p.m., Royal Vardhman Guest House, Ladnun",
+    "imageWidth": 1200,
+    "imageHeight": 630
   }
 }
