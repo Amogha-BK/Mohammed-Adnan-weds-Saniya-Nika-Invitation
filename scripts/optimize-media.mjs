@@ -21,5 +21,5 @@ function encode(input, output, options) {
   if (result.status !== 0) throw new Error(result.stderr);
   report(input, output);
 }
-encode(`${assets}kudmayi.mp3`, `${assets}kudmayi-mobile-v1.mp3`, ["-vn", "-c:a", "libmp3lame", "-b:a", "80k", "-ar", "44100", "-ac", "2", "-map_metadata", "-1"]);
+encode(`${assets}wedding-nasheed-source.mp3`, `${assets}wedding-nasheed-mobile-v1.mp3`, ["-vn", "-c:a", "libmp3lame", "-b:a", "80k", "-ar", "44100", "-ac", "2", "-map_metadata", "-1"]);
 encode(`${assets}envelope-opening-safari.mp4`, `${assets}envelope-opening-mobile-v1.mp4`, ["-an", "-vf", "scale=720:-2", "-c:v", "libx264", "-preset", "medium", "-crf", "28", "-profile:v", "baseline", "-level", "3.1", "-pix_fmt", "yuv420p", "-movflags", "+faststart"]);

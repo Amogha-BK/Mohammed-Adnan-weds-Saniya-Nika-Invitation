@@ -1,9 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Sparkles, Heart } from "lucide-react";
 import { useInvitation } from "./invitation/InvitationContext";
+import { dateParts } from "./invitation/schema";
 
 export function ScratchCard() {
   const config = useInvitation();
+  const savedDates = [...new Set([
+    config.weddingDate,
+    ...config.celebrations.filter((event) => event.id === "reception").map((event) => event.start.slice(0, 10)),
+  ])].sort().map(dateParts);
+  const savedDays = savedDates.map((date) => date.day).join(" & ");
+  const savedDateLabel = savedDates.every((date) => date.monthYear === savedDates[0].monthYear)
+    ? `${savedDays} ${savedDates[0].monthYear}`
+    : savedDates.map((date) => date.full).join(" & ");
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -179,17 +188,17 @@ export function ScratchCard() {
         ref={containerRef}
         className="scratch-card-box"
         role="region"
-        aria-label="Interactive scratch card revealing wedding date"
+        aria-label="Interactive scratch card revealing celebration dates"
       >
         {/* Base Layer: Revealed Wedding Date */}
         <div className="scratch-underlay">
           <div className="scratch-inner-border">
-            <span className="scratch-kicker">Save The Date</span>
+            <span className="scratch-kicker">Save The Dates</span>
             <div className="scratch-date-display">
-              <span className="scratch-day-num">{config.display.wedding.day}</span>
+              <span className={`scratch-day-num ${savedDates.length > 1 ? "scratch-day-range" : ""}`}>{savedDays}</span>
               <div className="scratch-month-col">
                 <strong>{config.display.wedding.month.toUpperCase()}</strong>
-                <span>{config.display.wedding.year} · {config.display.wedding.weekday.toUpperCase()}</span>
+                <span>{config.display.wedding.year} · {savedDates.map((date) => date.weekday.slice(0, 3).toUpperCase()).join(" & ")}</span>
               </div>
             </div>
             <p className="scratch-couple-names">
@@ -223,7 +232,7 @@ export function ScratchCard() {
           {isRevealed ? (
             <span className="scratch-revealed-text">
               <Sparkles size={13} className="inline mr-1 text-[var(--teal)]" aria-hidden="true" />
-              Date Revealed! {config.display.wedding.full}
+              Dates Revealed! {savedDateLabel}
             </span>
           ) : (
             <span>

@@ -861,7 +861,7 @@ export default function App() {
 
           <section className="countdown-section" id="countdown">
             <div className="date-keepsake">
-              <SectionHeading eyebrow="A little moment of joy">Save our date</SectionHeading>
+              <SectionHeading eyebrow="A little moment of joy">Save our dates</SectionHeading>
               <ScratchCard />
             </div>
             <div className="countdown-panel">
@@ -874,7 +874,7 @@ export default function App() {
 
           <section className="celebrations-section" id="celebrations">
             <SparkleField variant="celebrations" active={opened} />
-            <SectionHeading eyebrow={config.display.celebrationsLabel}>
+            <SectionHeading eyebrow={config.display.celebrationsLabel.split(" · ")[0]}>
               Let the celebrations begin
             </SectionHeading>
             <p className="section-intro">
@@ -902,8 +902,8 @@ export default function App() {
               aria-label="Decorative Mughal arch with jasmine, ivory flowers and gold lanterns for the Nikah"
             />
             <div className="venue-content">
-              <SectionHeading eyebrow="A beautiful place for a new beginning">
-                Meet us here
+              <SectionHeading eyebrow="6 December 2026 · 7:00 p.m. IST">
+                Walima in Ladnun
               </SectionHeading>
               <MapPin className="venue-pin" />
               <h3>{config.venue.name}</h3>

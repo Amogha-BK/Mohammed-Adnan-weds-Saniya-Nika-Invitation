@@ -7,8 +7,8 @@ const venue = {
 };
 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${venue.name}, ${venue.address}`)}`;
 const regards = "Haji Mohammed Nathu · Haji Mohammad Rafiq · Mohammed Arif · Mohammed Aslam · Mohammed Arman · Mohammed Anas";
-const event = (details: Pick<WeddingEvent, "id" | "shortName" | "title" | "start" | "supportingLine" | "image">): WeddingEvent => ({
-  ...details, venue: venue.name, address: venue.address, mapUrl, scene: "lanterns", phereTime: "",
+const event = (details: Pick<WeddingEvent, "id" | "shortName" | "title" | "start" | "supportingLine" | "image"> & Partial<Pick<WeddingEvent, "venue" | "address" | "mapUrl">>): WeddingEvent => ({
+  venue: venue.name, address: venue.address, mapUrl, scene: "lanterns", phereTime: "", ...details,
 });
 export const invitationConfig = {
   couple: {
@@ -26,7 +26,7 @@ export const invitationConfig = {
   artwork: "/assets/muslim-nikah-v1.webp",
   venue: { ...venue, mapUrl },
   contacts: ["8890085006", "9829759585", "9829895959", "9950955176"],
-  optional: { travel: "", stay: "", contact: "", musicUrl: "/assets/kudmayi-mobile-v1.mp3", whatsappHostNumber: "" },
+  optional: { travel: "", stay: "", contact: "", musicUrl: "/assets/wedding-nasheed-mobile-v1.mp3", whatsappHostNumber: "" },
   celebrations: [
     event({ id: "haldi", shortName: "Rasm-e-Haldi", title: "Rasm-e-Haldi — Rang-e-Khushi",
       start: "2026-12-04T17:00:00+05:30",
@@ -36,9 +36,12 @@ export const invitationConfig = {
       start: "2026-12-04T20:00:00+05:30",
       supportingLine: "Mehndi ki khushboo, rishton ki mithaas. An evening of henna, laughter and cherished moments with our loved ones.",
       image: "/assets/muslim-mehndi-v1.webp" }),
-    event({ id: "wedding", shortName: "Dawat-e-Nikah", title: "Dawat-e-Nikah — Qubool Hai",
+    event({ id: "wedding", shortName: "Barat & Nikah", title: "Barat & Nikah — Qubool Hai",
       start: "2026-12-05T13:00:00+05:30",
-      supportingLine: "Insha’Allah, two hearts begin a life together in Nikah. Please grace the occasion with your presence and duas for a blessed union.",
+      venue: "Sujangarh",
+      address: "Sujangarh, Rajasthan",
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Sujangarh%2C%20Rajasthan",
+      supportingLine: "5 December — Barat ka din. Barat Sujangarh jayegi. Insha’Allah, join us in Sujangarh for the Nikah and bless the couple with your duas.",
       image: "/assets/muslim-nikah-v1.webp" }),
     event({ id: "reception", shortName: "Dawat-e-Walima", title: "Dawat-e-Walima — Jashn-e-Mohabbat",
       start: "2026-12-06T19:00:00+05:30",

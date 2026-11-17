@@ -25,7 +25,7 @@ test("opening defers heavy media; a tap starts sound and the invitation stays us
   await expect(page.locator("#wedding time")).toHaveAttribute("datetime", "2026-12-05T13:00:00+05:30");
   await expect(page.locator("#reception time")).toHaveAttribute("datetime", "2026-12-06T19:00:00+05:30");
   await page.getByRole("button", { name: "Reveal the date", exact: true }).tap();
-  await expect(page.locator(".scratch-revealed-text")).toContainText("5 December 2026");
+  await expect(page.locator(".scratch-revealed-text")).toContainText("5 & 6 December 2026");
   for (const viewport of [{ width: 320, height: 740 }, { width: 390, height: 844 }, { width: 844, height: 390 }]) {
     await page.setViewportSize(viewport);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
