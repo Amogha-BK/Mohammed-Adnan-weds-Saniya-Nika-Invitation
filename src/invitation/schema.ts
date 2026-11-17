@@ -368,7 +368,10 @@ export function toTemplateConfig(record: WeddingRecord) {
     display: {
       wedding,
       celebrationsLabel: `${range} · ${record.city}`,
-      initials: [record.couple.first[0], record.couple.second[0]],
+      initials: [
+        record.couple.first.replace(/^(?:mo\.?|mohammed|mohammad)\s+/i, "")[0],
+        record.couple.second[0],
+      ],
       countdownLabel: `${dateParts(record.countdownTarget).full} · ${timeLabel(record.countdownTarget)} IST`,
     },
     celebrations: record.celebrations.map((e) => ({

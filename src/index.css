@@ -2793,7 +2793,7 @@ footer { padding-top: 205px; }
   box-shadow: 0 18px 50px #6848320c, inset 0 0 0 10px #f5ead4, inset 0 0 0 11px #d8c49c;
 }
 .family-section::before {
-  content: 'M & S';
+  content: 'A & S';
   top: 28px;
   left: calc(50% - 38px);
   width: 76px;
@@ -2875,7 +2875,7 @@ footer { padding-top: 205px; }
   pointer-events: none;
 }
 .family-section::before {
-  content: 'M & S';
+  content: 'A & S';
   top: 64px;
   left: calc(50% - 43px);
   width: 86px;

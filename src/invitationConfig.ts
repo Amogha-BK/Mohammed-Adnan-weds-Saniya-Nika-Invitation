@@ -14,7 +14,7 @@ export const invitationConfig = {
   couple: {
     first: "Mo. Adnan", second: "Saniya",
     brideParents: "Dukhtar-e Haji Mo. Imran & Amna",
-    groomParents: "Farzand-e Mohammed Arif & Sabhnam",
+    groomParents: "Farzand-e Mohammed Arif & Shabnam",
     groomGrandparents: "",
   },
   countdownTarget: "2026-12-05T13:00:00+05:30",
